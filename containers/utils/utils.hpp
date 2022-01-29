@@ -39,6 +39,8 @@ private:
     void operator&() const;
 
 } u_nullptr = {};
+//Learn this
+//https://en.cppreference.com/w/cpp/language/aggregate_initialization
 
 namespace ft
 {
