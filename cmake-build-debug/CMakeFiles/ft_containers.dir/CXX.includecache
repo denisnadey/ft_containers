@@ -20,14 +20,6 @@ utils/utils.hpp
 utils/random_access_iterator.hpp
 /Users/mdenys/CLionProjects/ft_containers/containers/utils/random_access_iterator.hpp
 
-/Users/mdenys/CLionProjects/ft_containers/containers/utils/UtilsMasha.cpp
-UtilsMasha.hpp
-/Users/mdenys/CLionProjects/ft_containers/containers/utils/UtilsMasha.hpp
-
-/Users/mdenys/CLionProjects/ft_containers/containers/utils/UtilsMasha.hpp
-string
--
-
 /Users/mdenys/CLionProjects/ft_containers/containers/utils/random_access_iterator.hpp
 utils.hpp
 /Users/mdenys/CLionProjects/ft_containers/containers/utils/utils.hpp
@@ -47,8 +39,8 @@ iostream
 /Users/mdenys/CLionProjects/ft_containers/main.cpp
 iostream
 -
+vector
+-
 containers/Vector.hpp
 /Users/mdenys/CLionProjects/ft_containers/containers/Vector.hpp
-containers/utils/UtilsMasha.hpp
-/Users/mdenys/CLionProjects/ft_containers/containers/utils/UtilsMasha.hpp
 

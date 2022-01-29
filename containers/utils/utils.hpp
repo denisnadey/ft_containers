@@ -11,27 +11,21 @@
 # include <typeinfo>
 # include <iostream>
 
-/*
-** @brief Type of the null pointer constant.
-** Permetted implicit conversions to null pointer ,
-** similary conversions for all type of contant null pointer.
-**
-** From : (Take a look)
-** https://www.amazon.com/dp/0201924889
-*/
 static class nullptr_t
 {
 public:
     /*
-    ** @brief For conversion to any type
-    ** of null non-member pointer.
+    ** @brief Для преобразования в любой тип
+    ** указателя с нулевым нечленом.
     */
     template<class T>
     operator T*() const { return (0); }
 
+
+
     /*
-    ** @brief For conversion to any type of null
-    ** member pointer.
+    ** @brief Для преобразования в любой тип null
+    ** указатель члена.
     */
     template<class C, class T>
     operator T C::*() const { return (0); }
@@ -39,8 +33,8 @@ public:
 private:
 
     /*
-    ** @brief It's imposible to get an address of
-    ** a nullptr.
+    ** @brief Невозможно получить адрес.
+    ** nullptr.
     */
     void operator&() const;
 
@@ -49,13 +43,13 @@ private:
 namespace ft
 {
     /*
-    ** @brief Transfom "n" to std::string.
+    ** @brief Перевод "n" в std::string.
     **
-    ** @param n the object to convert. (Sure for
-    ** classic number types).
-    ** @return Converted "n".
+    ** @param n - объект для преобразования. (Конечно, для
+    ** классических числовых типов).
+    ** @return Преобразованное "n".
     **
-    ** Take a look:
+    ** Посмотрите:
     ** http://www.cplusplus.com/articles/D9j2Nwbp/
     */
     template <typename T>
@@ -68,14 +62,14 @@ namespace ft
     }
 
     /*
-    ** Base class for standard binary function objects.
+    ** Базовый класс для стандартных объектов двоичных функций.
     ** (Doc = http://www.cplusplus.com/reference/functional/binary_function/?kw=binary_function)
-    ** It have no operator "()" like functin objects,
-    ** it is up to the class deriving from it to define it.
-    ** It just has 3 public data memebers that are typedefs of the
-    ** template parameters.
-    ** (the operator "()", permet to use a class with the same syntax
-    ** as a function call).
+    ** Он не имеет оператора "()", как объекты функций,
+    ** его определение зависит от класса, производного от него.
+    ** У него только есть 3 публичных мембера данных, которые являются типизированными определениями
+    ** параметров шаблона.
+    ** (оператор "()", позволяет использовать класс с тем же синтаксисом
+    ** как вызов функции).
     */
     template <class Arg1, class Arg2, class Result>
     struct binary_function
@@ -91,10 +85,10 @@ namespace ft
     };
 
     /*
-    ** A binary function object class who will return
-    ** whether the first arguement compares less than the second.
-    ** (using "<" operator).
-    */
+   ** Класс объекта бинарной функции, который возвращает.
+   ** сравнивает ли первый аргумент меньше второго.
+   ** (с использованием оператора "<").
+   */
     template <class T>
     struct less : binary_function<T, T, bool>
     {
@@ -102,34 +96,34 @@ namespace ft
     };
 
     /*
-    ** Couple a pair of values, which may be of different types
-    ** (T1 and T2)
+    ** Соедините пару значений, которые могут быть разных типов
+    ** (T1 и T2)
     */
     template <class T1, class T2>
     struct pair
     {
     public :
 
-        // Member types :
+        // Типы членов :
 
-        /* The first template argument type */
+        /* Первый тип аргумента шаблона */
         typedef T1 first_type;
 
-        /* The second template argument type */
+        /* Второй тип аргумента шаблона */
         typedef T2 second_type;
 
-        // Member variables :
+        // Переменные-члены :
 
-        /* The first value in the pair */
+        /* Первое значение в паре */
         first_type first;
 
-        /* The second value in the pair */
+        /* Второе значение в паре */
         second_type second;
 
         /*
         ** @brief Default.
-        ** Construct a pair object with its element
-        ** value-initialized.
+        ** Конструирует объект пары с его элементом.
+        ** инициализированным значением.
         */
         pair()
                 :
@@ -139,11 +133,11 @@ namespace ft
 
         /*
         ** @brief Copy.
-        ** The pair is initialized with the content
-        ** of "pr". The "pr" first is passed to this
-        ** first, same for second of each.
+        ** Пара инициализируется содержимым.
+        ** "pr". Первое "pr" передается этому
+        ** первый, то же самое для второго из каждого.
         **
-        ** @param pr the pair to copy.
+        ** @param pr пара для копирования.
         */
         template<class U, class V>
         pair (const pair<U, V>& pr)
@@ -153,12 +147,12 @@ namespace ft
         {}
 
         /*
-        ** @brief Initialization.
-        ** Member "first" is constructed with a.
-        ** Member "second" is constructed with b.
+        ** @brief Инициализация.
+        ** Член "first" строится с помощью a.
+        ** Член "second" конструируется с помощью b.
         **
-        ** @param a to member first.
-        ** @param b to member second.
+        ** @param a для первого члена.
+        ** @param b члену second.
         */
         pair (const first_type& a, const second_type& b)
                 :
@@ -167,9 +161,9 @@ namespace ft
         {}
 
         /*
-        ** @brief Assigns "pr" member (first, second) to this.
+        ** @brief Присваивает члену "pr" (первый, второй).
         **
-        ** @param pr the pair object to copy.
+        ** @param pr объект пары для копирования.
         */
         pair& operator= (const pair& pr)
         {
@@ -182,11 +176,11 @@ namespace ft
     };
 
     /*
-    ** @brief Equal comparison between two pair object.
+    ** @brief Равное сравнение между двумя парными объектами.
     **
-    ** @param lhs Base of comparison.
-    ** @param rhs To compare with "lsh".
-    ** @return True if the condition is hold, otherwise false.
+    ** @param lhs База сравнения.
+    ** @param rhs Для сравнения с "lsh".
+    ** @return True, если условие выполняется, иначе false.
     */
     template <class T1, class T2>
     bool operator== (const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs)
@@ -195,11 +189,11 @@ namespace ft
     }
 
     /*
-    ** @brief Difference comparison between two pair object.
+    ** @brief Сравнение различий между двумя парными объектами.
     **
-    ** @param lhs Base of comparison.
-    ** @param rhs To compare with "lsh".
-    ** @return True if the condition is hold, otherwise false.
+    ** @param lhs База сравнения.
+    ** @param rhs Для сравнения с "lsh".
+    ** @return True, если условие выполняется, иначе false.
     */
     template <class T1, class T2>
     bool operator!= (const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs)
@@ -208,11 +202,11 @@ namespace ft
     }
 
     /*
-    ** @brief Inferior comparison between two pair object.
+    ** @brief Неполное сравнение между двумя парными объектами.
     **
-    ** @param lhs Base of comparison.
-    ** @param rhs To compare with "lsh".
-    ** @return True if the condition is hold, otherwise false.
+    ** @param lhs База сравнения.
+    ** @param rhs Для сравнения с "lsh".
+    ** @return True, если условие выполняется, иначе false.
     */
     template <class T1, class T2>
     bool operator<  (const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs)
@@ -221,11 +215,11 @@ namespace ft
     }
 
     /*
-    ** @brief Inferior or equal comparison between two pair object.
+    ** @brief Неполное или равное сравнение между двумя парными объектами.
     **
-    ** @param lhs Base of comparison.
-    ** @param rhs To compare with "lsh".
-    ** @return True if the condition is hold, otherwise false.
+    ** @param lhs База сравнения.
+    ** @param rhs Для сравнения с "lsh".
+    ** @return True, если условие выполняется, иначе false.
     */
     template <class T1, class T2>
     bool operator<= (const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs)
@@ -234,11 +228,11 @@ namespace ft
     }
 
     /*
-    ** @brief Superior comparison between two pair object.
+    ** @brief Превосходное сравнение между двумя парными объектами.
     **
-    ** @param lhs Base of comparison.
-    ** @param rhs To compare with "lsh".
-    ** @return True if the condition is hold, otherwise false.
+    ** @param lhs База сравнения.
+    ** @param rhs Для сравнения с "lsh".
+    ** @return True, если условие выполняется, иначе false.
     */
     template <class T1, class T2>
     bool operator>  (const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs)
@@ -247,11 +241,11 @@ namespace ft
     }
 
     /*
-    ** @brief Superior or equal comparison between two pair object.
+    ** @brief Превосходное или равное сравнение между двумя парными объектами.
     **
-    ** @param lhs Base of comparison.
-    ** @param rhs To compare with "lsh".
-    ** @return True if the condition is hold, otherwise false.
+    ** @param lhs База сравнения.
+    ** @param rhs Для сравнения с "lsh".
+    ** @return True, если условие выполняется, иначе false.
     */
     template <class T1, class T2>
     bool operator>= (const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs)
@@ -260,10 +254,10 @@ namespace ft
     }
 
     /*
-    ** @bref Construct a pair object with
-    ** "x" and "y".
+    ** @bref Постройте объект пары с.
+    ** "x" и "y".
     **
-    ** @param x, y elements. (can have different types).
+    ** @param x, y элементы. (могут иметь разные типы).
     ** @return the pair object.
     */
     template <class T1, class T2>
@@ -273,45 +267,46 @@ namespace ft
     }
 
     /*
-    ** @brief The type T is enabled as member type enable_if::type
-    ** if Cond is true. Otherwise, enable_if::type is not defined.
-    ** Usefull when a particular condition is not met, in this case
-    ** the member enable_if::type will ne be defined and attempting
-    ** to compile using to should fail. (If this is use in template
-    ** of a function, for exemple, like the type is not defined the
-    ** compiler will not compile and use the function).
+    ** @brief Тип T включается как тип-член enable_if::type
+    ** если Cond равен true. В противном случае enable_if::type не определен.
+    ** Используется, когда определенное условие не выполняется, в этом случае
+    ** член enable_if::type не будет определен и попытка
+    ** скомпилировать с его помощью не удастся. (Если это используется в шаблоне
+    ** функции, например, если тип не определен, то
+    ** компилятор не будет компилировать и использовать функцию).
     **
-    ** @template_param Cond A compile-time constant of type bool.
-    ** @template_param T A type.
+    ** @template_param Cond Компилируемая константа типа bool.
+    ** @template_param T Тип.
     */
+
     template<bool Cond, class T = void> struct enable_if {};
     template<class T> struct enable_if<true, T> { typedef T type; };
 
     /*
-    ** All the next part is an adaptation of is_integral.
-    ** "is_integral" for this project in C++98 is a structure
-    ** that contain if the type given to it is a type from this list :
-    **  - bool
-    **  - char
-    **  - char16_t
-    **  - char32_t
-    **  - wchar_t
-    **  - signed char
-    **  - short int
-    **  - int
-    **  - long int
-    **  - long long int
-    **  - unsigned char
-    **  - unsigned short int
-    **  - unsigned int
-    **  - unsigned long int
-    **  - unsigned long long int
+    ** Вся следующая часть является адаптацией is_integral.
+    ** "is_integral" для этого проекта в C++98 - это структура, ** которая содержит, если заданный ей тип является типом из этого списка.
+    **, которая содержит, если заданный ей тип является типом из этого списка :
+    ** - bool
+    ** - char
+    ** - char16_t
+    ** - char32_t
+    ** - wchar_t
+    ** - signed char
+    ** - short int
+    ** - int
+    ** - long int
+    ** - long long int
+    ** - беззнаковый char
+    ** - unsigned short int
+    ** - беззнаковый int
+    ** - unsigned long int
+    ** - unsigned long int
     */
 
     /*
-    ** @brief The basic struct of is_integral has
-    ** has a boolean ("value") that contain true if the type is from.
-    ** the list, otherwise false.
+    ** @brief Основная структура is_integral имеет.
+    ** имеет булево значение ("value"), которое содержит true, если тип из.
+    ** списка, иначе false.
     */
     template <bool is_integral, typename T>
     struct is_integral_res {
@@ -320,11 +315,11 @@ namespace ft
     };
 
     /*
-    ** @brief default template of the structure is_integral_type.
-    ** If the type given in argument is from the list, the structure
-    ** will be overide by nexts, in according to it type.
-    ** If the type given is argument isn't in the list,
-    ** stocked value will be false. So it's not a integral type.
+    ** @brief шаблон структуры по умолчанию is_integral_type.
+    ** Если тип, указанный в аргументе, из списка, то структура
+    ** будет перекрываться следующими, в соответствии с ее типом.
+    ** Если тип, указанный в аргументе, не из списка,
+    ** хранимое значение будет false. Таким образом, это не интегральный тип.
     */
     template <typename>
     struct is_integral_type : public is_integral_res<false, bool> {};
