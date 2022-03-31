@@ -38,6 +38,8 @@ namespace ft {
     template<typename  T, typename  Alloc = std::allocator<T> >
     class vector {
     public:
+        /// value_type - констурктор нашего передаваемого типа например если
+        /// мы передадим конструктор стриги со значением "да" то вызовится требуемый консттруктор с значением "да"
         typedef 			T												value_type;
         typedef				Alloc											allocator_type;
         typedef typename	allocator_type::reference						reference;
@@ -55,26 +57,56 @@ namespace ft {
 
 
     private:
-        pointer			_data;
-        size_t			_size;
-        size_t			_capacity;
-        allocator_type	_alloc;
-        pointer			_begin;
-        pointer			_end;
-        pointer			_capacity_end;
+        pointer			_data; /// указатель на память с данными на нашу коллекцию
+        size_t			_size; /// количество элементов
+        size_t			_capacity; /// обьем
+        allocator_type	_alloc; /// вызванный аллокатор
+        pointer			_begin; /// начало наших данных
+        pointer			_end; /// конец наших данных
+        pointer			_capacity_end; /// TODO ???
+
+
+        ///чтобы не забыть реализацию пиши себе комменты
+        /// даже когда думаешь что будешь писать контейнеры каждый день
 
 
 
+        void			reallocate(size_t n = 0)
+        {
+
+            size_t		count_to_allocate; ///будущий обьем
+            pointer		tmp; ///временная дата
+
+            /// проверяем текущий обьем
+            if (_capacity == 0)
+                ///если обьем был нулевой задаем единицу
+                count_to_allocate = 1;
+
+            /// если нам пришел какой либо аргумент то выставляем будущий обьем по аргументу
+            else if (n)
+                count_to_allocate = n;
+            ///иначе текущий обьем умножим на 2
+            else
+                count_to_allocate = _capacity * 2;
+            tmp = _data;
+            ///муваем указатель даты на временный темп
+            if (!(_data = _alloc.allocate(count_to_allocate)))
+                ///кидаем эксепшн если не удалось реалочить
+                throw std::bad_alloc();
+            for (size_t i = 0; i < _size; ++i)
+            {
+                //выделяет новую память и копирует старую
+                _alloc.construct(&_data[i], tmp[i]);
+                //убивает старую память
+                _alloc.destroy(&tmp[i]);
+            }
+            _alloc.deallocate(tmp, _capacity);
+            _capacity = count_to_allocate;
+        }
 
 
         /* constructors vector */
     public:
-
-
-
-
-
-
         /* example   ft::vector<std::string> tmp;
          * это требуется инициализации пустой коллекции
          * */
@@ -87,7 +119,13 @@ namespace ft {
             * */
         explicit vector(size_type n, const value_type& val = value_type(),
                          const allocator_type& alloc = allocator_type()) : _data(NULL),  _size(n),  _capacity(n), _alloc(alloc)   {
-
+            if (!(_data = _alloc.allocate(n)))
+                throw std::bad_alloc();
+            for (unsigned int i = 0; i < n; ++i)
+            {
+                _alloc.construct(&_data[i], val);
+            }
+            _end = _begin + _size;
         }
 
 
@@ -97,7 +135,7 @@ namespace ft {
          * */
         template <class InputIterator>
         vector (InputIterator first, InputIterator last,
-                const allocator_type& alloc = allocator_type()) :_data(NULL) , _size(0),  _capacity(0), _alloc(alloc), _begin(0), _end(0) {
+                const allocator_type& alloc = allocator_type()) : _data(NULL) , _size(0),  _capacity(0), _alloc(alloc), _begin(0), _end(0) {
 
         }
 
@@ -107,14 +145,22 @@ namespace ft {
         *
         * */
         vector (const vector& x) : _data(NULL), _size(0), _capacity(0), _alloc(allocator_type()), _begin(0), _end(0) {
-
+            insert(begin(), x.begin(), x.end());
         }
 
 
         virtual ~vector() {}
 
+
+
         iterator				begin() {return this->_begin;};
         iterator				end() {return this->_end;};
+
+        void                    insert(iterator position, size_type n, const value_type& val)
+        {
+
+        }
+
     };
 
 
