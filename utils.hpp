@@ -6,6 +6,7 @@
 #define FT_CONTAINERS_UTILS_HPP
 
 #include <ciso646>
+#include "reverse_iterator.hpp"
 
 namespace ft
 {
@@ -50,6 +51,15 @@ namespace ft
     template <>			struct is_integral<__uint128_t>        : public true_type {};
 
 
+
+    template <class	Iterator>
+    typename ft::iterator_traits<Iterator>::difference_type		distance(Iterator first, Iterator last)
+    {
+        typename ft::iterator_traits<Iterator>::difference_type	n = 0;
+        while (first++ != last)
+            n++;
+        return n;
+    }
 
     template <class InputIterator1, class InputIterator2>
     bool equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2)

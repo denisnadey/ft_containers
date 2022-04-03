@@ -56,14 +56,14 @@ namespace ft {
 
 
 
+
     private:
         pointer			_data; /// указатель на память с данными на нашу коллекцию
         size_t			_size; /// количество элементов
-        size_t			_capacity; /// обьем
+        size_t			_capacity; /// обьем памяти выделленный для контейнера ( там может быть больше чем нужно)
         allocator_type	_alloc; /// вызванный аллокатор
-        pointer			_begin; /// начало наших данных
-        pointer			_end; /// конец наших данных
-        pointer			_capacity_end; /// TODO ???
+        pointer			_begin; /// начало наших данных на первый  элемент
+        pointer			_end; ///   конец наших данных указатель на последний элемент
 
 
         ///чтобы не забыть реализацию пиши себе комменты
@@ -74,7 +74,7 @@ namespace ft {
         void			reallocate(size_t n = 0)
         {
 
-            size_t		count_to_allocate; ///будущий обьем
+            size_t		count_to_allocate; ///будущий обьемa
             pointer		tmp; ///временная дата
 
             /// проверяем текущий обьем
@@ -156,9 +156,66 @@ namespace ft {
         iterator				begin() {return this->_begin;};
         iterator				end() {return this->_end;};
 
-        void                    insert(iterator position, size_type n, const value_type& val)
+        template <class InputIterator>
+        void			insert(iterator position, InputIterator first, InputIterator last)
         {
+            if (first == last)
+                return;
+            size_type distance = ft::distance(first, last);
+            if (_capacity < _size  + distance)
+            {
+                size_type	count_to_allocate = _size + distance > _capacity * 2 ? _size + distance : _capacity * 2;
+                pointer new_data;
+                if (!(new_data = _alloc.allocate(count_to_allocate)))
+                    ///кидаем эксепшн если не удалось реалочить
+                    throw std::bad_alloc();
+                iterator it = begin();
+                size_type i;
 
+                for(i = 0; i != position; ++i)
+                {
+                    _alloc.construct(new_data + i, *it++);
+                }
+                for (size_type j = 0; j < distance; ++j)
+                {
+                    _alloc.construct(new_data + i++, *first++ );
+                }
+                for (; it != end(); ++i)
+                {
+                    _alloc.construct(new_data + i, *it++);
+                }
+                for (size_type j = 0; j < _size; ++j)
+                {
+                    _alloc.destroy(_data + j);
+                }
+
+                _data = new_data;
+                _size += distance;
+                _capacity = count_to_allocate;
+                _begin = _data;
+                _end = _data + _size;
+
+            }
+            else {
+                size_type	tail_size = end() - position;
+                value_type	tmp[tail_size];
+                iterator	tail = position;
+
+                for (size_type i = 0; tail != end(); ++i)
+                    _alloc.construct(&tmp[i], *tail++);
+                for (size_type i = 0; first != last; ++i)
+                {
+                    _alloc.destroy(&*position);
+                    _alloc.construct(&*position++, *first++);
+                }
+                for (size_type i = 0; i < tail_size; ++i)
+                {
+                    _alloc.construct(&*position++, tmp[i]);
+                    _alloc.destroy(tmp + i);
+                }
+                _size += distance;
+                _end += distance;
+            }
         }
 
     };
