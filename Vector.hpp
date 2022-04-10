@@ -10,21 +10,6 @@
 # include <cstddef>
 # include <tgmath.h>
 
-
-//Открыть твои контейнерв
-//        Открыть сайт спп ком
-//        Разобраться какие методы есть у вектора и поля
-//        Разобраться с каждым методом
-//        Разобраться что такое итераторы
-//        Посмотреть серегины итераторы
-//Реализация
-//        Написать класс вектор
-//Описать все тайпдефы
-//        Определится с итераторы и их написать
-//        Реализовать все методы по очереди
-//
-//
-//
 //Порядок реализации
 //Вектор
 //        Стек
@@ -136,7 +121,7 @@ namespace ft {
         template <class InputIterator>
         vector (InputIterator first, InputIterator last,
                 const allocator_type& alloc = allocator_type()) : _data(NULL) , _size(0),  _capacity(0), _alloc(alloc), _begin(0), _end(0) {
-
+            insert(begin(), first, last);
         }
 
 
@@ -145,16 +130,83 @@ namespace ft {
         *
         * */
         vector (const vector& x) : _data(NULL), _size(0), _capacity(0), _alloc(allocator_type()), _begin(0), _end(0) {
+            //TODO refactor this
             insert(begin(), x.begin(), x.end());
         }
 
 
         virtual ~vector() {}
 
+        void	clear()
+        {
+            while (_size)
+                pop_back();
+        }
 
+        vector&			operator=(const vector& x)
+        {
+            clear();
+            insert(x.begin(), x.end());
+        }
 
         iterator				begin() {return this->_begin;};
         iterator				end() {return this->_end;};
+
+        void			insert(iterator position, size_type n, const value_type& value)
+        {
+            if (!n)
+                return ;
+            if (_capacity < _size + n)
+            {
+                size_type	count_to_allocate = _size + n > _capacity * 2 ? _size + n : _capacity * 2;
+                pointer		new_data;
+                iterator	it = begin();
+                size_type	i;
+
+                if (!(new_data = _alloc.allocate(count_to_allocate)))
+                {
+                    ///кидаем эксепшн если не удалось реалочить
+                    throw std::bad_alloc();
+                }
+
+                for (i = 0; it != position; ++i)
+                    _alloc.construct(new_data + i, *it++);
+                for (size_type j = 0; j < n; ++j)
+                    _alloc.construct(new_data + i++, value);
+                for (; it != end(); ++i)
+                    _alloc.construct(new_data + i, *it++);
+                for (size_type j = 0; j < _size; ++j)
+                    _alloc.destroy(_data + j);
+                _data = new_data;
+                _size += n;
+                _capacity = count_to_allocate;
+                _begin = _data;
+                _end = _data + _size;
+
+            }
+            else
+            {
+                size_type	tail_size = end() - position;
+                value_type	tmp[tail_size];
+                iterator	tail = position;
+
+                for (size_type i = 0; tail != end(); ++i)
+                    _alloc.construct(&tmp[i], *tail++);
+                for (size_type i = 0; i < n; ++i)
+                {
+                    _alloc.destroy(&*position);
+                    _alloc.construct(&*position++, value);
+                }
+                for (size_type	i = 0; i < tail_size; ++i)
+                {
+                    _alloc.construct(&*position++, tmp[i]);
+                    _alloc.destroy(tmp + i);
+                }
+                _size += n;
+                _end += n;
+            }
+        }
+
 
         template <class InputIterator>
         void			insert(iterator position, InputIterator first, InputIterator last)
@@ -167,8 +219,10 @@ namespace ft {
                 size_type	count_to_allocate = _size + distance > _capacity * 2 ? _size + distance : _capacity * 2;
                 pointer new_data;
                 if (!(new_data = _alloc.allocate(count_to_allocate)))
+                {
                     ///кидаем эксепшн если не удалось реалочить
                     throw std::bad_alloc();
+                }
                 iterator it = begin();
                 size_type i;
 
@@ -217,6 +271,34 @@ namespace ft {
                 _end += distance;
             }
         }
+
+
+        iterator insert(iterator position, const value_type& value)
+        {
+            size_type pos = position - begin();
+            insert(position, 1, value);
+            return begin() + pos;
+        }
+
+
+        void        pop_back()
+        {
+            _alloc.destroy(&_data[--_size]);
+            --_end;
+        }
+
+        void push_back(const value_type& value)
+        {
+            if (_size == _capacity)
+            {
+                this->reallocate();
+            }
+            _alloc.construct(&_data[_size++], value);
+            _begin = _data;
+            _end = _begin + _size;
+        }
+
+
 
     };
 
