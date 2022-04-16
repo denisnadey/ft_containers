@@ -10,11 +10,7 @@
 # include <cstddef>
 # include <tgmath.h>
 
-//Порядок реализации
-//Вектор
-//        Стек
-//Мапа
-//        Сет
+
 
 namespace ft {
 
