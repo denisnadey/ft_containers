@@ -6,7 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/mdenys/CLionProjects/ft_containers/containers/Vector.hpp
+/Users/mdenys/CLionProjects/ft_containers/Vector.hpp
+vector_iterator.hpp
+/Users/mdenys/CLionProjects/ft_containers/vector_iterator.hpp
 memory
 -
 algorithm
@@ -15,32 +17,32 @@ cstddef
 -
 tgmath.h
 -
-utils/utils.hpp
-/Users/mdenys/CLionProjects/ft_containers/containers/utils/utils.hpp
-utils/random_access_iterator.hpp
-/Users/mdenys/CLionProjects/ft_containers/containers/utils/random_access_iterator.hpp
-
-/Users/mdenys/CLionProjects/ft_containers/containers/utils/random_access_iterator.hpp
-utils.hpp
-/Users/mdenys/CLionProjects/ft_containers/containers/utils/utils.hpp
-
-/Users/mdenys/CLionProjects/ft_containers/containers/utils/utils.hpp
-cstddef
--
-limits
--
-sstream
--
-typeinfo
--
-iostream
--
 
 /Users/mdenys/CLionProjects/ft_containers/main.cpp
 iostream
 -
 vector
 -
-containers/Vector.hpp
-/Users/mdenys/CLionProjects/ft_containers/containers/Vector.hpp
+Vector.hpp
+/Users/mdenys/CLionProjects/ft_containers/Vector.hpp
+
+/Users/mdenys/CLionProjects/ft_containers/reverse_iterator.hpp
+iostream
+-
+utils.hpp
+/Users/mdenys/CLionProjects/ft_containers/utils.hpp
+
+/Users/mdenys/CLionProjects/ft_containers/utils.hpp
+ciso646
+-
+reverse_iterator.hpp
+/Users/mdenys/CLionProjects/ft_containers/reverse_iterator.hpp
+
+/Users/mdenys/CLionProjects/ft_containers/vector_iterator.hpp
+clocale
+-
+utils.hpp
+/Users/mdenys/CLionProjects/ft_containers/utils.hpp
+reverse_iterator.hpp
+/Users/mdenys/CLionProjects/ft_containers/reverse_iterator.hpp
 

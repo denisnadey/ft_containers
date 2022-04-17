@@ -378,7 +378,7 @@ namespace ft {
                 iterator it = begin();
                 size_type i;
 
-                for(i = 0; i != position; ++i)
+                for(i = 0; it != position; ++i)
                 {
                     _alloc.construct(new_data + i, *it++);
                 }
