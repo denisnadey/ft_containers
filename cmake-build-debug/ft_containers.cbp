@@ -80,16 +80,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/Vector.hpp">
-			<Option target="ft_containers"/>
-		</Unit>
 		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/main.cpp">
 			<Option target="ft_containers"/>
 		</Unit>
 		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/reverse_iterator.hpp">
 			<Option target="ft_containers"/>
 		</Unit>
+		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/stack.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
 		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/utils.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/vector.hpp">
 			<Option target="ft_containers"/>
 		</Unit>
 		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/vector_iterator.hpp">
