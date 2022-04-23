@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <map>
 
 #include "vector.hpp"
 
@@ -16,6 +17,8 @@ using namespace ft;
 
 
 int main() {
+
+        std::map<int, int> testMap;
 
     ft::vector<std::string> test ;
     test.push_back("da");
