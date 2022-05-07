@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/mdenys/CLionProjects/ft_containers/btree.hpp
+cstddef
+-
+
 /Users/mdenys/CLionProjects/ft_containers/main.cpp
 iostream
 -
@@ -15,6 +19,28 @@ map
 -
 vector.hpp
 /Users/mdenys/CLionProjects/ft_containers/vector.hpp
+map.hpp
+/Users/mdenys/CLionProjects/ft_containers/map.hpp
+
+/Users/mdenys/CLionProjects/ft_containers/map.hpp
+iostream
+-
+utils.hpp
+/Users/mdenys/CLionProjects/ft_containers/utils.hpp
+pair.hpp
+/Users/mdenys/CLionProjects/ft_containers/pair.hpp
+btree.hpp
+/Users/mdenys/CLionProjects/ft_containers/btree.hpp
+map_iterator.hpp
+/Users/mdenys/CLionProjects/ft_containers/map_iterator.hpp
+
+/Users/mdenys/CLionProjects/ft_containers/map_iterator.hpp
+btree.hpp
+/Users/mdenys/CLionProjects/ft_containers/btree.hpp
+reverse_iterator.hpp
+/Users/mdenys/CLionProjects/ft_containers/reverse_iterator.hpp
+
+/Users/mdenys/CLionProjects/ft_containers/pair.hpp
 
 /Users/mdenys/CLionProjects/ft_containers/reverse_iterator.hpp
 iostream

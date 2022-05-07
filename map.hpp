@@ -355,7 +355,7 @@ namespace ft
 
     private:
 
-        node_pointer				far_left(node_pointer node) const
+        node_pointer				far_left(node_pointer node) const /// крайний слева
         {
             if (!node)
                 return _last;
@@ -364,7 +364,7 @@ namespace ft
             return node;
         }
 
-        node_pointer				far_right(node_pointer node) const
+        node_pointer				far_right(node_pointer node) const  /// крайний справа
         {
             if (!node)
                 return _last;
@@ -373,7 +373,7 @@ namespace ft
             return node;
         }
 
-        void						left_rotate(node_pointer a)
+        void						left_rotate(node_pointer a)  /// левый поворот
         {
             node_pointer	b = a->_right;
             a->_right = b->_left;
@@ -395,7 +395,7 @@ namespace ft
                 a->_parent = b;
         }
 
-        void						right_rotate(node_pointer a)
+        void						right_rotate(node_pointer a) /// правый поворот
         {
             node_pointer	b = a->_left;
             a->_left = b->_right;
@@ -417,7 +417,7 @@ namespace ft
                 a->_parent = b;
         }
 
-        node_pointer				insert_in_tree(const value_type& val, node_pointer current)
+        node_pointer				insert_in_tree(const value_type& val, node_pointer current) /// вставка в дерево
         {
             if (_size == 0)
             {
@@ -445,14 +445,14 @@ namespace ft
             return new_node;
         }
 
-        bool					is_left_branch(node_pointer	node)
+        bool					is_left_branch(node_pointer	node) /// левая ветвь
         {
             if (!node->_parent)
                 return false;
             return node == node->_parent->_left;
         }
 
-        void					balance(node_pointer x)
+        void					balance(node_pointer x) /// балансировка
         {
             while (x != _root && x->_parent->_color == RED)
             {
@@ -508,7 +508,7 @@ namespace ft
             _root->_color = BLACK;
         }
 
-        void	balance_after_del(node_pointer node)
+        void	balance_after_del(node_pointer node)  /// балансировка после удаления
         {
             while (node->_parent && node != _root && node->_color == BLACK)
             {

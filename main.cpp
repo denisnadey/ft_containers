@@ -11,7 +11,13 @@ using namespace ft;
 
 
 
-///TODO insert,
+/*
+ * Разобраться как работать с мапой в плюсах
+ * сравнить псевдокод и фукнции сереги
+ * узнать что такое поворот
+ * и все методы описанные в контейнере
+ * посмотреть визуализации
+ */
 
 
 
@@ -19,9 +25,16 @@ using namespace ft;
 
 int main() {
 
-        ft::map<int, int> testMap ;
 
 
+    ft::map<std::string, int> first;
+
+    first["da"]=80;
+
+
+    std::cout << (first.find("da"))->second << std::endl;
+
+std::cout << "teest" << std::endl;
 
     return 0;
 }
