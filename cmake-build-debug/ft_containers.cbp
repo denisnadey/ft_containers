@@ -98,6 +98,12 @@
 		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/reverse_iterator.hpp">
 			<Option target="ft_containers"/>
 		</Unit>
+		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/set.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/set_iterator.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
 		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/stack.hpp">
 			<Option target="ft_containers"/>
 		</Unit>
