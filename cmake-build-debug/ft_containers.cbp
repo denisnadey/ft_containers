@@ -80,10 +80,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/btree.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
 		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/main.cpp">
 			<Option target="ft_containers"/>
 		</Unit>
 		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/map.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/map_iterator.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/pair.hpp">
 			<Option target="ft_containers"/>
 		</Unit>
 		<Unit filename="/Users/mdenys/CLionProjects/ft_containers/reverse_iterator.hpp">

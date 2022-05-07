@@ -3,6 +3,7 @@
 #include <map>
 
 #include "vector.hpp"
+#include "map.hpp"
 
 using namespace ft;
 
@@ -18,17 +19,9 @@ using namespace ft;
 
 int main() {
 
-        std::map<int, int> testMap;
+        ft::map<int, int> testMap ;
 
-    ft::vector<std::string> test ;
-    test.push_back("da");
-    ft::vector<std::string>::iterator iterator = test.end();
-    test.insert(iterator, "kek");
 
-    for (ft::vector<std::string>::iterator it = test.begin();  it != test.end(); it++ )
-    {
-        std::cout << *it << std::endl;
-    }
 
     return 0;
 }
