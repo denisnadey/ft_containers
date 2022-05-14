@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ft_containers.dir/compare_res.cpp.o"
   "CMakeFiles/ft_containers.dir/main.cpp.o"
+  "CMakeFiles/ft_containers.dir/tests.cpp.o"
   "ft_containers"
   "ft_containers.pdb"
 )

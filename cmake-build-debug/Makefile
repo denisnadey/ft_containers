@@ -129,6 +129,30 @@ ft_containers/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_containers.dir/build.make CMakeFiles/ft_containers.dir/build
 .PHONY : ft_containers/fast
 
+compare_res.o: compare_res.cpp.o
+.PHONY : compare_res.o
+
+# target to build an object file
+compare_res.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_containers.dir/build.make CMakeFiles/ft_containers.dir/compare_res.cpp.o
+.PHONY : compare_res.cpp.o
+
+compare_res.i: compare_res.cpp.i
+.PHONY : compare_res.i
+
+# target to preprocess a source file
+compare_res.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_containers.dir/build.make CMakeFiles/ft_containers.dir/compare_res.cpp.i
+.PHONY : compare_res.cpp.i
+
+compare_res.s: compare_res.cpp.s
+.PHONY : compare_res.s
+
+# target to generate assembly for a file
+compare_res.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_containers.dir/build.make CMakeFiles/ft_containers.dir/compare_res.cpp.s
+.PHONY : compare_res.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -153,6 +177,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_containers.dir/build.make CMakeFiles/ft_containers.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+tests.o: tests.cpp.o
+.PHONY : tests.o
+
+# target to build an object file
+tests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_containers.dir/build.make CMakeFiles/ft_containers.dir/tests.cpp.o
+.PHONY : tests.cpp.o
+
+tests.i: tests.cpp.i
+.PHONY : tests.i
+
+# target to preprocess a source file
+tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_containers.dir/build.make CMakeFiles/ft_containers.dir/tests.cpp.i
+.PHONY : tests.cpp.i
+
+tests.s: tests.cpp.s
+.PHONY : tests.s
+
+# target to generate assembly for a file
+tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_containers.dir/build.make CMakeFiles/ft_containers.dir/tests.cpp.s
+.PHONY : tests.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,9 +210,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ft_containers"
+	@echo "... compare_res.o"
+	@echo "... compare_res.i"
+	@echo "... compare_res.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... tests.o"
+	@echo "... tests.i"
+	@echo "... tests.s"
 .PHONY : help
 
 
