@@ -32,7 +32,7 @@ namespace ft
                 while (_p->_flag != 1 && _p->_right->_flag == 0)
                     _p = _p->_right;
             }
-            else if (_p == _p->_parent->_left)
+            else if (_p->_parent != NULL && _p == _p->_parent->_left)
             {
                 while(_p == _p->_parent->_left)
                     _p = _p->_parent;
